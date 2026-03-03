@@ -245,15 +245,16 @@ class ZhuijuCalendarDiscover(_PluginBase):
         is_movie = self.__to_bool(item.get("isMovie")) or default_media_type == "movie"
         media_type = self.__build_media_type(is_movie)
 
-        title = item.get("name") or item.get("title")
+        title = item.get("name") or item.get("title") or item.get("t1")
         release_date = (
             item.get("release_date") or item.get("first_air_date") or item.get("first_aired")
         )
-        overview = item.get("overview")
+        overview = item.get("overview") or item.get("t2")
         vote_average = item.get("vote_average")
         poster_path = item.get("poster_path")
 
-        if (not title or not release_date or not overview or not poster_path) and tmdb_id:
+        # 地区榜单数据可能只有 t1/t2/poster_path，不应强依赖 TMDB 详情才能展示
+        if (not title or not poster_path) and tmdb_id:
             detail = self.__fetch_tmdb_detail(tmdb_id=tmdb_id, media_type=media_type)
             if detail:
                 title = title or detail.get("title") or detail.get("name")
