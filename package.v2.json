@@ -3,7 +3,7 @@
     "name": "追剧日历探索",
     "description": "让探索支持追剧日历的今明播、周历、各项榜单和今日推荐。",
     "labels": "探索,追剧日历",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "icon": "https://raw.githubusercontent.com/jxxghp/MoviePilot-Plugins/main/icons/Moviepilot_A.png",
     "author": "anxian,huangxd",
     "level": 1,
